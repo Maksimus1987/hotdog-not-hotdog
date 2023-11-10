@@ -48,3 +48,14 @@
 
 Данный проект лицензирован в соответствии с [лицензией MIT](LICENSE).
 
+<img src="./screenshots/screenshots_1.jpg" width="700">
+
+<img src="./screenshots/screenshots_2.jpg" width="700">
+
+<img src="./screenshots/screenshots_3.jpg" width="700">
+
+<img src="./screenshots/screenshots_4.jpg" width="700">
+
+<img src="./screenshots/screenshots_5.jpg" width="700">
+
+<img src="./screenshots/screenshots_6.jpg" width="700">
