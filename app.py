@@ -1,22 +1,22 @@
 # Разработчик №1 (@Maksimus1987 mask-13@mail.ru) - Импорт необходимых библиотек и инициализация модели классификации изображений
-import streamlit as st # Эта строка импортирует библиотеку Streamlit, которая используется для создания веб-приложений в Python
-from transformers import pipeline # Эта строка импортирует функцию pipeline из библиотеки transformers
-# pipeline используется для создания конвейера машинного обучения, который мы затем используем для классификации изображений
-from PIL import Image # Эта строка импортирует модуль Image из библиотеки PIL (Pillow), Image используется для открытия и манипулирования изображениями
-pipeline = pipeline(task="image-classification", model="julien-c/hotdog-not-hotdog")# Эта строка создает конвейер машинного обучения для классификации изображений с использованием модели "julien-c/hotdog-not-hotdog"
+import streamlit as st
+from transformers import pipeline 
+
+from PIL import Image
+pipeline = pipeline(task="image-classification", model="julien-c/hotdog-not-hotdog")
 
 # Разработчик №2 - Создание веб-страницы с помощью Streamlit и загрузка изображения пользователем
-st.title("Hot Dog? Or Not?") # Эта строка создает заголовок веб-страницы с помощью Streamlit
-file_name = st.file_uploader("Upload a hot dog candidate image") # Эта строка создает элемент загрузки файлов на веб-странице, который позволяет пользователям загрузить изображение
+st.title("Hot Dog? Or Not?")
+file_name = st.file_uploader("Upload a hot dog candidate image") 
 
 # Разработчик №3 @aleksrf1 aleksrf@gmail.com - Обработка загруженного изображения и получение прогноза модели
-if file_name is not None: # Эта строка проверяет, был ли загружен файл, если файл загружен, код внутри этого условия будет выполнен
-    col1, col2 = st.columns(2) # Эта строка создает две колонки на веб-странице, в которые мы затем поместим изображение и прогнозы
-    image = Image.open(file_name) # Эта строка открывает загруженное изображение с помощью модуля Image из библиотеки PIL
-    col1.image(image, use_column_width=True) # Эта строка отображает открытое изображение в первой колонке веб-страницы
-    predictions = pipeline(image) # Эта строка использует модель машинного обучения для прогнозирования класса изображения
-    col2.header("Probabilities") # Эта строка создает заголовок во второй колонке веб-страницы, который говорит о вероятностях прогноза
+if file_name is not None:
+    col1, col2 = st.columns(2)
+    image = Image.open(file_name)
+    col1.image(image, use_column_width=True)
+    predictions = pipeline(image)
+    col2.header("Probabilities")
 # Разработчик №4 (@xbtart xbtart@yandex.ru - Миронов Артур Викторович) - Отображение изображения и прогноза на веб-странице
-    for p in predictions: # Эта строка начинает цикл, который проходит по каждому прогнозу
-        col2.subheader(f"{p['label']}: {round(p['score'] * 100, 1)}%") # Эта строка отображает каждый прогноз в виде подзаголовка во второй колонке веб-страницы.
-# Подзаголовок показывает метку прогноза и вероятность прогноза в процентах.
+    for p in predictions:
+        col2.subheader(f"{p['label']}: {round(p['score'] * 100, 1)}%")
+
