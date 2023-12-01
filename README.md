@@ -22,7 +22,7 @@
 
 2. Установите необходимые библиотеки с помощью следующей команды:
    ```
-   pip install streamlit transformers torch numpy PIL
+   pip install streamlit transformers torch numpy Pillow
    ```
 
 ### Использование
